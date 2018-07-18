@@ -8,17 +8,55 @@ $teal: rgba(168, 218, 220, 1);
 $blue1: rgba(69, 123, 157, 1);
 $blue2: rgba(29, 53, 87, 1);
 
-
+$heightOfRow: 100px;
 
 body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0px;
-  background-color: $teal;
+  background-color: #ECE9E6;
+}
+p, h1, h2, h3, h4, h5, h6, div{
+  font-family: 'Nixie One', cursive;
+}
+.container {
+  margin: 3vh;
+  height: 94vh;
+  width: auto;
+}
+.pure-u-3-4{
+  .chartcontainer{
+    height: $heightOfRow !important;
+    padding: 2% !important;
+    // we need this to make it scale correctly.
+    canvas{
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 }
 
-.container {
-  background: #222;
-  height: 100%;
-  width: 100%;
+
+
+.unit-stat{
+  .statsText {
+    text-align: center;
+  }
+
+  span {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 1rem;
+}
+    background: white;
+  margin-bottom: 3vh;
+}
+
+.red{
+  color: $red;
+}
+
+.teal{
+  color: $teal;
 }
