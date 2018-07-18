@@ -21,6 +21,46 @@ p, h1, h2, h3, h4, h5, h6, div {
     width: 100% !important;
     height: 100% !important; }
 
+.weatherIcon {
+  font-size: 200%; }
+
+.weather-day {
+  text-align: center; }
+
+.time {
+  text-align: center;
+  background: white; }
+  .time span {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1rem; }
+
+.news {
+  text-align: center;
+  background: white; }
+
+.tempContainer {
+  margin-left: 3vh;
+  width: 100%; }
+
+.articleImage {
+  width: 30%; }
+
+.weather {
+  background: white;
+  margin-left: 3vh; }
+  .weather span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1rem; }
+
+.temp-part {
+  margin-left: 3vh; }
+
+.topper {
+  margin-bottom: 3vh; }
+
 .unit-stat {
   background: white;
   margin-bottom: 3vh; }

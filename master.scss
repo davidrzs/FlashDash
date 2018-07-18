@@ -36,7 +36,55 @@ p, h1, h2, h3, h4, h5, h6, div{
   }
 }
 
+.weatherIcon{
+  font-size: 200%;
+}
+.weather-day{
+  text-align: center;
+}
 
+.time{
+  text-align: center;
+  background: white;
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1rem;
+  }
+}
+
+.news {
+  text-align: center;
+  background: white;
+}
+
+
+.tempContainer{
+    margin-left: 3vh;
+    width: 100%;
+}
+.articleImage{
+  width: 30%;
+}
+
+.weather {
+  background: white;
+  margin-left: 3vh;
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1rem;
+  }
+}
+
+.temp-part{
+  margin-left: 3vh;
+}
+
+.topper {
+  margin-bottom: 3vh;
+}
 
 .unit-stat{
   .statsText {
@@ -48,10 +96,14 @@ p, h1, h2, h3, h4, h5, h6, div{
   vertical-align: middle;
   text-align: center;
   line-height: 1rem;
-}
+  }
     background: white;
-  margin-bottom: 3vh;
+    margin-bottom: 3vh;
 }
+
+
+
+
 
 .red{
   color: $red;
