@@ -56,7 +56,6 @@ p, h1, h2, h3, h4, h5, h6, div{
 
 .news {
   text-align: center;
-  background: white;
 }
 
 
@@ -64,8 +63,9 @@ p, h1, h2, h3, h4, h5, h6, div{
     margin-left: 3vh;
     width: 100%;
 }
-.articleImage{
-  width: 30%;
+
+.singleArticle{
+  background-color: white;
 }
 
 .weather {
