@@ -61,16 +61,32 @@ p, h1, h2, h3, h4, h5, h6, div {
     vertical-align: middle;
     line-height: 1rem; }
 
+.tasks {
+  margin: 0vh;
+  padding: 0.5vh;
+  background: white;
+  height: 100%;
+  margin-right: 3vh; }
+
 .stockquote {
   background: white;
+  margin: 0vh;
+  padding: 0.5vh;
   text-align: center; }
   .stockquote span {
     display: inline-block;
     vertical-align: middle;
     line-height: 1rem; }
 
-.nonfirststockquote {
-  margin-left: 3vh; }
+.red_s {
+  background: #f1d2d2; }
+
+.green_s {
+  background: #d6f8d6; }
+
+.stock-container {
+  margin: 0;
+  padding: 0; }
 
 .temp-part {
   margin-left: 3vh; }
@@ -89,8 +105,14 @@ p, h1, h2, h3, h4, h5, h6, div {
     text-align: center;
     line-height: 1rem; }
 
+.sources {
+  text-align: right; }
+
 .red {
-  color: #e63946; }
+  color: red; }
+
+.green {
+  color: green; }
 
 .teal {
   color: #a8dadc; }

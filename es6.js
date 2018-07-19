@@ -14,6 +14,11 @@ let iconTwoDays = document.getElementById('iconTwoDays');
 let dayNameTomorrow = document.getElementById('dayNameTomorrow');
 let dayNameInTwoDays = document.getElementById('dayNameInTwoDays');
 
+let sp500Quote = document.getElementById('sp500Quote');
+let smiQuote = document.getElementById('smiQuote');
+let nasdaqQuote = document.getElementById('nasdaqQuote');
+let ftseQuote = document.getElementById('ftseQuote');
+
 
 socket.on('changeArticle', function(article){
   let art = article.article;
@@ -23,6 +28,22 @@ socket.on('changeArticle', function(article){
 });
 
 
+socket.on('indices', function(indices){
+  console.log(indices);
+  let indicesArr = indices.indices;
+  sp500Quote.innerHTML = indicesArr.sp500 + '%';
+  indicesArr.sp500.includes('+') ? sp500Quote.className = 'green' : sp500Quote.className = 'red';
+
+  smiQuote.innerHTML = indicesArr.smi + '%';
+  indicesArr.smi.includes('+') ? smiQuote.className = 'green' : smiQuote.className = 'red';
+
+  nasdaqQuote.innerHTML = indicesArr.nasdaq + '%';
+  indicesArr.nasdaq.includes('+') ? nasdaqQuote.className = 'green' : nasdaqQuote.className = 'red';
+
+  ftseQuote.innerHTML = indicesArr.ftse100 + '%';
+  indicesArr.ftse100.includes('+') ? ftseQuote.className = 'green' : ftseQuote.className = 'red';
+
+});
 
 
 
@@ -50,6 +71,9 @@ socket.on('changeArticle', function(article){
     dayNameInTwoDays.innerHTML = inTwoDays.toLocaleString('de-CH',{ weekday: 'long' })
 
  });
+
+
+
 
 
  function startTime() {

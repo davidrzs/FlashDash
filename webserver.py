@@ -8,7 +8,32 @@ from time import sleep
 from threading import Thread, Event
 import datetime
 from random import shuffle
+from lxml import html
 
+
+
+def get_indices():
+    smiPage = requests.get('https://www.finanzen.net/index/SMI')
+    smiTree = html.fromstring(smiPage.content)
+    smiChangeString = smiTree.xpath('/html/body/div[3]/div[6]/div[3]/div[14]/div[1]/div/div/div[1]/div[2]/div[1]/div[3]/text()')
+    smiChange = smiChangeString[0]
+
+    nasdaqPage = requests.get('https://www.finanzen.net/index/Nasdaq_100')
+    nasdaqTree = html.fromstring(nasdaqPage.content)
+    nasdaqChangeString = nasdaqTree.xpath('/html/body/div[3]/div[6]/div[3]/div[14]/div[1]/div/div/div[1]/div[2]/div[1]/div[3]/text()')
+    nasdaqChange = nasdaqChangeString[0]
+
+    sp500Page = requests.get('https://www.finanzen.net/index/S&P_500')
+    sp500Tree = html.fromstring(sp500Page.content)
+    sp500ChangeString = sp500Tree.xpath('/html/body/div[3]/div[6]/div[3]/div[14]/div[1]/div/div/div[1]/div[2]/div[1]/div[3]/text()')
+    sp500Change = sp500ChangeString[0]
+
+    ftse100Page = requests.get('https://www.finanzen.net/index/FTSE_100')
+    ftse100Tree = html.fromstring(ftse100Page.content)
+    ftse100ChangeString = ftse100Tree.xpath('/html/body/div[3]/div[6]/div[3]/div[14]/div[1]/div/div/div[1]/div[2]/div[1]/div[3]/text()')
+    ftse100Change = ftse100ChangeString[0]
+
+    return { "smi": smiChange, "nasdaq": nasdaqChange, "sp500": sp500Change, "ftse100": ftse100Change}
 
 
 def get_articles():
@@ -50,6 +75,7 @@ class PageManagementThread(Thread):
         super(PageManagementThread, self).__init__()
 
     def mainLoop(self):
+        indices = get_indices()
         currentArticle = 0
         weatherCounter = 0
         articleList = get_articles()
@@ -67,12 +93,17 @@ class PageManagementThread(Thread):
 
             #every 200 seconds we refresh the weather
             if weatherCounter == 100:
+                #lets also get the indices again
+                indices = get_indices()
+
                 weatherCounter = 0
                 weather = get_weather()
 
-            socketio.emit('changeArticle', {'article': articleList[currentArticle]})
-            time.sleep(1)
             socketio.emit('weather', {'weather': weather})
+            socketio.emit('indices', {'indices': indices})
+            time.sleep(1)
+            socketio.emit('changeArticle', {'article': articleList[currentArticle]})
+
 
     def run(self):
         self.mainLoop()
