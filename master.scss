@@ -65,6 +65,7 @@ p, h1, h2, h3, h4, h5, h6, div{
 }
 
 .singleArticle{
+  line-height: 2rem;
   padding-left: 3vh;
   padding-right: 3vh;
 
@@ -84,6 +85,21 @@ p, h1, h2, h3, h4, h5, h6, div{
     vertical-align: middle;
     line-height: 1rem;
   }
+}
+
+
+.stockquote{
+    background: white;
+    text-align: center;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1rem;
+    }
+}
+
+.nonfirststockquote{
+  margin-left: 3vh;
 }
 
 .temp-part{

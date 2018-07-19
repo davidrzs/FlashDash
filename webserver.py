@@ -6,6 +6,8 @@ from flask import Flask, render_template, url_for, copy_current_request_context
 from random import random
 from time import sleep
 from threading import Thread, Event
+import datetime
+from random import shuffle
 
 
 
@@ -19,9 +21,21 @@ def get_articles():
     return jsonArticles["articles"]
 
 
+def get_weather():
+    url = 'http://api.openweathermap.org/data/2.5/forecast?lat=47.2694&lon=8.6832&units=metric&mode=json&APPID=aaf60ae32ca1738640f49cd0121611dd'
+    wetterDict = json.loads(requests.get(url).text)
+    weatherList = wetterDict["list"]
+    jetzt = weatherList[0]
+    filtered1WeatherList = list(filter(lambda wea: "12:00" in wea["dt_txt"] , weatherList))
+    tomorrowDate = (datetime.datetime.now() + datetime.timedelta(days=1)).strftime("%y-%m-%d")
+    inTwoDaysDate = (datetime.datetime.now() + datetime.timedelta(days=2)).strftime("%y-%m-%d")
+    filtered2WeatherList = list(filter(lambda wea: tomorrowDate in wea["dt_txt"] or inTwoDaysDate in wea["dt_txt"], filtered1WeatherList))
+    filtered2WeatherList.insert(0, jetzt)
+    return filtered2WeatherList
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = 'jdas3498asdJfshdsf'
 app.config['DEBUG'] = True
 
 #turn the flask app into a socketio app
@@ -37,16 +51,28 @@ class PageManagementThread(Thread):
 
     def mainLoop(self):
         currentArticle = 0
+        weatherCounter = 0
         articleList = get_articles()
-
+        shuffle(articleList)
+        weather = get_weather()
         while True:
             time.sleep(1)
             #check if there are some unseen articles left
             if currentArticle + 1 == len(articleList):
                 articleList = get_articles()
+                shuffle(articleList)
                 currentArticle = 0
             currentArticle += 1
+            weatherCounter += 1
+
+            #every 200 seconds we refresh the weather
+            if weatherCounter == 100:
+                weatherCounter = 0
+                weather = get_weather()
+
             socketio.emit('changeArticle', {'article': articleList[currentArticle]})
+            time.sleep(1)
+            socketio.emit('weather', {'weather': weather})
 
     def run(self):
         self.mainLoop()
