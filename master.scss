@@ -65,7 +65,15 @@ p, h1, h2, h3, h4, h5, h6, div{
 }
 
 .singleArticle{
-  background-color: white;
+  padding-left: 3vh;
+  padding-right: 3vh;
+
+    background: white;
+    margin-bottom: 3vh;
+}
+
+.articleSource{
+  text-align: right;
 }
 
 .weather {
