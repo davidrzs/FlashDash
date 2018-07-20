@@ -106,7 +106,7 @@ class PageManagementThread(Thread):
 
             socketio.emit('weather', {'weather': weather})
             socketio.emit('indices', {'indices': indices})
-            time.sleep(1)
+            time.sleep(8)
             socketio.emit('changeArticle', {'article': articleList[currentArticle]})
 
 
