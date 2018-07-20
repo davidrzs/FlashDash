@@ -11,6 +11,11 @@ from random import shuffle
 from lxml import html
 
 
+def read_credentials():
+    file = open("./config.yaml", "r")
+    contents =  file.readlines()
+    file.close()
+    return yaml.load(contents)
 
 def get_indices():
     smiPage = requests.get('https://www.finanzen.net/index/SMI')
