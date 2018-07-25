@@ -90,7 +90,13 @@ html_theme = 'alabaster'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+'font_family': 'Georgia',
+'github_repo': 'https://github.com/davidrzs/Dashboard',
+'show_powered_by': 'true',
+'head_font_family' : 'Georgia',
+'caption_font_family' : 'Georgia',
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -165,6 +171,3 @@ texinfo_documents = [
      author, 'Dashboard', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
