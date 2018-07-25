@@ -19,6 +19,6 @@ FlashDash support the following features
 This documentation will be extended in the future.
 
 
-##Licenses
+## Licenses
 
 Coming soon
