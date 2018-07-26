@@ -1,7 +1,7 @@
 # Dashboard
 
 Dashboard is a simple to use personal dashboard that can display a variety of information.
- ![./screenshot.png](dashboard screenshot)
+ ![dashboard screenshot](./screenshot.png)
 
 ## Features
 
