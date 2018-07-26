@@ -51,8 +51,8 @@ def get_articles():
     return jsonArticles["articles"]
 
 
-def get_weather():
-    url = 'http://api.openweathermap.org/data/2.5/forecast?lat=47.2694&lon=8.6832&units=metric&mode=json&APPID=aaf60ae32ca1738640f49cd0121611dd'
+def get_weather(apiKey):
+    url = 'http://api.openweathermap.org/data/2.5/forecast?lat=47.2694&lon=8.6832&units=metric&mode=json&APPID=' + apiKey
     wetterDict = json.loads(requests.get(url).text)
     weatherList = wetterDict["list"]
     jetzt = weatherList[0]
@@ -85,7 +85,7 @@ class PageManagementThread(Thread):
         weatherCounter = 0
         articleList = get_articles()
         shuffle(articleList)
-        weather = get_weather()
+        weather = get_weather('aaf60ae32ca1738640f49cd0121611dd')
         while True:
             time.sleep(1)
             #check if there are some unseen articles left
