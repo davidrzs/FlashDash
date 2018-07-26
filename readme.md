@@ -10,8 +10,12 @@ The dashboard can show the following things:
 - weather for the next three days
 - news from a wide range of sources
 - date and time
+- temperature or related time series data from a REST-API
 - more coming soon..
 
+## Installation and Usage
+
+Coming soon. Since this project is still under active development things will change & break.
 
 ## Background of the project
 

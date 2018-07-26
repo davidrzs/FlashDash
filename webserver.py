@@ -9,13 +9,12 @@ from threading import Thread, Event
 import datetime
 from random import shuffle
 from lxml import html
+import yaml
 
 
 def read_credentials():
-    file = open("./config.yaml", "r")
-    contents =  file.readlines()
-    file.close()
-    return yaml.load(contents)
+    stream = open('config.yaml', 'r')
+    return yaml.load(stream)
 
 def get_indices():
     smiPage = requests.get('https://www.finanzen.net/index/SMI')
@@ -41,9 +40,9 @@ def get_indices():
     return { "smi": smiChange, "nasdaq": nasdaqChange, "sp500": sp500Change, "ftse100": ftse100Change}
 
 
-def get_articles():
+def get_articles(apiKey):
     sources = 'cnn,the-economist';
-    url = "https://newsapi.org/v2/top-headlines?" + "sources=" + sources + '&apiKey=695d4ed67e1d43688db17a3d40b1220a'
+    url = "https://newsapi.org/v2/top-headlines?" + "sources=" + sources + '&apiKey=' + apiKey
     contents = requests.get(url).text
     jsonArticles = json.loads(contents)
     ArticleList = jsonArticles["articles"]
@@ -80,17 +79,20 @@ class PageManagementThread(Thread):
         super(PageManagementThread, self).__init__()
 
     def mainLoop(self):
+        credentials = read_credentials()
+        weatherAPIKey = credentials['weatherAPIKey']
+        newsAPIKey = credentials['newsAPIKey']
         indices = get_indices()
         currentArticle = 0
         weatherCounter = 0
-        articleList = get_articles()
+        articleList = get_articles(newsAPIKey)
         shuffle(articleList)
-        weather = get_weather('aaf60ae32ca1738640f49cd0121611dd')
+        weather = get_weather(weatherAPIKey)
         while True:
             time.sleep(1)
             #check if there are some unseen articles left
             if currentArticle + 1 == len(articleList):
-                articleList = get_articles()
+                articleList = get_articles(newsAPIKey)
                 shuffle(articleList)
                 currentArticle = 0
             currentArticle += 1
@@ -102,11 +104,11 @@ class PageManagementThread(Thread):
                 indices = get_indices()
 
                 weatherCounter = 0
-                weather = get_weather()
+                weather = get_weather(weatherAPIKey)
 
             socketio.emit('weather', {'weather': weather})
             socketio.emit('indices', {'indices': indices})
-            time.sleep(8)
+            time.sleep(1)
             socketio.emit('changeArticle', {'article': articleList[currentArticle]})
 
 
