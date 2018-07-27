@@ -1,6 +1,6 @@
-# Dashboard
+# FlashDash
 
-Dashboard is a simple to use personal dashboard that can display a variety of information.
+FlashDash is a simple to use personal dashboard that can display a variety of information.
  ![dashboard screenshot](./screenshot.png)
 
 ## Features
@@ -25,7 +25,15 @@ IMPORTANT: Since this project is still under active development things will chan
 #### Installation
 1. Fork, clone or download this repository into a directory on your computer
 2. Create a file called `config.yaml` in the same folder. It should be on the same level in the filesystem as the file `webserver.py`.
-3. Enter your API Keys into the `config.yaml`
+
+##### API Keys and `config.yaml`
+
+In your newly created `config.yaml` copy and paste the following yaml code:
+```yaml
+weatherAPIKey: replace_me
+newsAPIKey: replace_me
+```
+Enter your API Keys which you can obtain at [https://openweathermap.org/](https://openweathermap.org/) and [https://newsapi.org/](https://newsapi.org/).
 
 #### Usage
 1. Open `index.html` in your browser.
@@ -40,6 +48,8 @@ This project has been written to transform an old LCD screen we had lying around
 
 ## Technical info
 coming soon.
+
+
 
 
 ## License

@@ -1,7 +1,7 @@
 # FlashDash
 
 FlashDash is a simple to use personal dashboard that can display a variety of information.
- ![dashboard screenshot](./images/screenshot.png)
+ ![dashboard screenshot](./screenshot.png)
 
 ## Features
 
