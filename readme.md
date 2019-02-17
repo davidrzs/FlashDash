@@ -1,5 +1,10 @@
 # FlashDash
 
+## Important Notice
+
+**Development of this project has been haltet since I currently do not have a lot of time. Development will resume when I have more time at my disposal.**
+
+
 FlashDash is a simple to use personal dashboard that can display a variety of information.
  ![dashboard screenshot](./screenshot.png)
 
@@ -44,7 +49,7 @@ Now, after waiting for a couple of seconds for everything to set up, your dashbo
 
 ## Background of the project
 
-This project has been written to transform an old LCD screen we had lying around our office into a modern dashboard using a RaspberryPi. Despite not containing any tests and having some rough edges, this side project will be maintained by us (and not be left to rot by itself).
+This project has been written to transform an old LCD screen we had lying around our office into a modern dashboard using a RaspberryPi. Despite not containing any tests and having some rough edges, this side project will be maintained by us. (though "maintenance intervals" can be sparse).
 
 
 ## Technical info
