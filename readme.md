@@ -41,8 +41,11 @@ newsAPIKey: replace_me
 Enter your API Keys which you can obtain at [https://openweathermap.org/](https://openweathermap.org/) and [https://newsapi.org/](https://newsapi.org/).
 
 #### Usage
-1. Open `index.html` in your browser.
-2. Open your terminal and type `python webserver.py`
+1. `python3 -m venv env`
+2. `source env/bin/activate`
+3. Open `index.html` in your browser.
+4. Open your terminal and type `python webserver.py`
+5. To close the virtual environment type `deactivate`
 
 Now, after waiting for a couple of seconds for everything to set up, your dashboard is running.
 
